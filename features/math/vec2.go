@@ -28,6 +28,11 @@ func (v Vec2) Magnitude() float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
+// Squared magnitude returns the magnitude of the vector.
+func (v Vec2) SqrMagnitude() float64 {
+	return v.X*v.X + v.Y*v.Y
+}
+
 // Normalized returns the normalized vector.
 func (v Vec2) Normalized() Vec2 {
 	m := v.Magnitude()
@@ -119,7 +124,7 @@ func (v Vec2) Distance(other Vec2) float64 {
 	return math.Sqrt(math.Pow(v.X-other.X, 2) + math.Pow(v.Y-other.Y, 2))
 }
 
-// Distance returns the distance between the vector and another vector.
+// Squared distance returns the distance between the vector and another vector.
 func (v Vec2) SqrDistance(other Vec2) float64 {
 	return math.Pow(v.X-other.X, 2) + math.Pow(v.Y-other.Y, 2)
 }
