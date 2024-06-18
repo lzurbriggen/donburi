@@ -205,19 +205,19 @@ func WorldScale(entry *donburi.Entry) dmath.Vec2 {
 
 // Right returns right vector of the entry.
 func Right(entry *donburi.Entry) dmath.Vec2 {
-	radians := dmath.ToRadians(WorldRotation(entry))
+	angle := WorldRotation(entry)
 	return dmath.Vec2{
-		X: math.Cos(radians),
-		Y: math.Sin(radians),
+		X: math.Cos(angle),
+		Y: math.Sin(angle),
 	}
 }
 
 // Up returns up vector of the entry.
 func Up(entry *donburi.Entry) dmath.Vec2 {
-	radians := dmath.ToRadians(WorldRotation(entry) - 90)
+	angle := WorldRotation(entry) - math.Pi/2
 	return dmath.Vec2{
-		X: math.Cos(radians),
-		Y: math.Sin(radians),
+		X: math.Cos(angle),
+		Y: math.Sin(angle),
 	}
 }
 
@@ -225,8 +225,8 @@ func Up(entry *donburi.Entry) dmath.Vec2 {
 func LookAt(entry *donburi.Entry, target dmath.Vec2) {
 	x := target.X - WorldPosition(entry).X
 	y := target.Y - WorldPosition(entry).Y
-	radians := math.Atan2(y, x)
-	SetWorldRotation(entry, dmath.ToDegrees(radians))
+	angle := math.Atan2(y, x)
+	SetWorldRotation(entry, angle)
 }
 
 var Transform = donburi.NewComponentType[TransformData](defaultValue)

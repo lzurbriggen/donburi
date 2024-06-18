@@ -119,6 +119,11 @@ func (v Vec2) Distance(other Vec2) float64 {
 	return math.Sqrt(math.Pow(v.X-other.X, 2) + math.Pow(v.Y-other.Y, 2))
 }
 
+// Distance returns the distance between the vector and another vector.
+func (v Vec2) SqrDistance(other Vec2) float64 {
+	return math.Pow(v.X-other.X, 2) + math.Pow(v.Y-other.Y, 2)
+}
+
 func (v Vec2) XY() (float64, float64) {
 	return v.X, v.Y
 }
